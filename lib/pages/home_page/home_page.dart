@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
+import 'package:toters/pages/burgar_page/burgar_page.dart';
 
 class toters_home extends StatefulWidget {
-  const toters_home({Key? key}) : super(key: key);
 
   @override
   State<toters_home> createState() => _toters_homeState();
@@ -20,6 +20,7 @@ class _toters_homeState extends State<toters_home> {
     'images/1.jpg',
     'images/1.jpg',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,121 +179,20 @@ class _toters_homeState extends State<toters_home> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 400,
-                width: 400,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  reverse: true,
                   children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          height: 200,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            image: DecorationImage(
-                              image: NetworkImage("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg"),
-                              fit: BoxFit.cover,
-                            )
-                          ),
-                        ),
-                        Positioned(
-                        top: 10,
-                        left: 15,
-                        child: Icon(Icons.favorite_border,size: 30,color: Colors.white,)
-                        ),
-                        Positioned(
-                          bottom: -10,
-                          left: 10,
-                          child: Container(
-                            width: 100,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [ BoxShadow(
-                                  blurRadius: 7,
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 7,
-                                )
-                                ]
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text("36 - 26",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text("د",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey),)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text("هايزن بركر",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                        Text("فاست فود - \$\$",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      ],
-                    ),
-                    /*Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                      Container(
-                        width: 100,
-                        height: 50,
-                        margin: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.star,color: Colors.greenAccent,size: 20,),
-                            Text("4.8",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 150,
-                        height: 50,
-                        margin: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.7),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.pinch,color: Colors.red,size: 20,),
-                            Text("20% خصم",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 150,
-                        height: 50,
-                        margin: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.7),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.add_circle,color: Colors.greenAccent,size: 20,),
-                            Text("أكتسب نقاط",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
-                          ],
-                        ),
-                      ),
-                    ],),*/
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","هايزن بركر","4.8", "20% خصم"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","زرزور","4.0", "30% خصم"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فلكينو بركر","3.8", "10% خصم"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فايكنك بركر","5.0", "50% خصم"),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ]));
@@ -331,5 +231,149 @@ class _toters_homeState extends State<toters_home> {
       ),
     );
   }
-
+  Container restaurants_card(String imagePath,String time, String rName, String stars, String dis){
+    return Container(
+      height: 400,
+      width: 350,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => burgar(
+                    rname: rName,
+                    imagepath: imagePath,
+                    disc: dis,
+                    stars: stars,
+                    timee: time,
+                  ))
+              );
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  height: 200,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      image: DecorationImage(
+                        image: NetworkImage(imagePath),
+                        fit: BoxFit.cover,
+                      )
+                  ),
+                ),
+                Positioned(
+                    top: 10,
+                    left: 15,
+                    child: Icon(Icons.favorite_border,size: 30,color: Colors.white,)
+                ),
+                Positioned(
+                  bottom: -10,
+                  left: 10,
+                  child: Container(
+                    width: 100,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [ BoxShadow(
+                          blurRadius: 7,
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 7,
+                        )
+                        ]
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(time,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                        Text("د",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey),)
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10,),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => burgar(
+                      rname: rName,
+                      imagepath: imagePath,
+                      disc: dis,
+                      stars: stars,
+                      timee: time,
+                    ))
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(rName,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                  Text("فاست فود - \$\$",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                ],
+              ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                width: 70,
+                height: 50,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(stars,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Icon(Icons.star,color: Colors.greenAccent,size: 30,),
+                  ],
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 50,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(dis,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    Icon(Icons.discount,color: Colors.red,size: 20,),
+                  ],
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 50,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("أكتسب نقاط",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    Icon(Icons.add_circle,color: Colors.greenAccent,size: 20,),
+                  ],
+                ),
+              ),
+            ],),
+        ],
+      ),
+    );
+  }
 }
