@@ -12,7 +12,10 @@ class _accountState extends State<account> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title : Row(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
@@ -24,28 +27,26 @@ class _accountState extends State<account> {
             ),
           ],
         ),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            GiftButton(context),
-            TopButtonsCards(),
-            TotersCashCard(),
-            PromotionsCard(),
-            AccountDetailsCard(),
-            HelpCenterCard(),
-            SignOutCard(),
+            sidecard(context),
+            first_cards(),
+            second_cards(),
+            third_cards(),
+            Account_Details_Cards(),
+            helpcenter(),
+            signout(),
           ],
         ),
       ),
     );
   }
 
-  Padding SignOutCard() {
+  Padding signout() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -58,22 +59,22 @@ class _accountState extends State<account> {
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children:[
+                      Text(
+                        "تسجيل خروج",
+                        style: TextStyle(fontSize: 16, color: Colors.red),
+                      ),
                       Icon(
                         Icons.logout_outlined,
                         color: Colors.red,
                         size: 25,
-                      ),
-                      Text(
-                        "Sign out",
-                        style: TextStyle(fontSize: 16, color: Colors.red),
                       ),
                     ],
                   ),
@@ -84,7 +85,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding HelpCenterCard() {
+  Padding helpcenter() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -97,14 +98,14 @@ class _accountState extends State<account> {
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
-                      "Help Center",
+                      "مركز المساعدة",
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
@@ -112,20 +113,20 @@ class _accountState extends State<account> {
                     ),
                   ],
                 ),
-                CardMaker("Get Support", Icons.support_agent_outlined),
-                MyItemsDivider(),
-                CardMaker("Support Tockets", Icons.message_outlined),
-                MyItemsDivider(),
-                CardMaker("Legal", Icons.gavel),
-                MyItemsDivider(),
-                CardMaker("FAQ", Icons.question_mark_rounded)
+                make("أطلب مساعدة", Icons.support_agent_outlined),
+                line(),
+                make("بطاقات مساعدة", Icons.message_outlined),
+                line(),
+                make("قانوني", Icons.gavel),
+                line(),
+                make("الأسئلة المتكررة", Icons.question_mark_rounded)
               ],
             )),
       ),
     );
   }
 
-  Padding AccountDetailsCard() {
+  Padding Account_Details_Cards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -138,14 +139,14 @@ class _accountState extends State<account> {
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
-                      "Account details",
+                      "تفاصيل الحساب",
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
@@ -153,40 +154,40 @@ class _accountState extends State<account> {
                     ),
                   ],
                 ),
-                CardMaker("Notifications", Icons.notifications_outlined),
-                MyItemsDivider(),
-                CardMaker("Addresses", Icons.location_on_outlined),
-                MyItemsDivider(),
-                CardMaker("Favorites", Icons.favorite_outline_outlined),
-                MyItemsDivider(),
-                CardMaker("Preferences", Icons.list_rounded),
-                MyItemsDivider(),
-                CardMaker("Refer a friend", Icons.person_add_alt)
+                make("أشعارات", Icons.notifications_outlined),
+                line(),
+                make("العناوين", Icons.location_on_outlined),
+                line(),
+                make("أختياراتك", Icons.favorite_outline_outlined),
+                line(),
+                make("التفضيلات", Icons.list_rounded),
+                line(),
+                make("ادع أصدقاءك", Icons.person_add_alt)
               ],
             )),
       ),
     );
   }
 
-  Padding CardMaker(String label, IconData iconname) {
+  Padding make(String label, IconData iconname) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
         onTap: () {},
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Text(
+                label,
+                style: TextStyle(fontSize: 16, color: Colors.black),
+              ),
+            ),
             Icon(
               iconname,
               color: Colors.black.withOpacity(0.3),
               size: 25,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Text(
-                label,
-                style: const TextStyle(fontSize: 16, color: Colors.black),
-              ),
             ),
           ],
         ),
@@ -194,7 +195,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding PromotionsCard() {
+  Padding third_cards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -207,14 +208,14 @@ class _accountState extends State<account> {
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
-                      "Promotions",
+                      "عروض خاصة",
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
@@ -229,39 +230,39 @@ class _accountState extends State<account> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            "0 د.ع",
+                            style: TextStyle(color: Colors.green, fontSize: 14),
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            "رصيد",
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ),
                         Icon(
                           Icons.monetization_on_outlined,
                           color: Colors.black.withOpacity(0.3),
                           size: 25,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            "Credits",
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Text(
-                            "IQD 0",
-                            style: TextStyle(color: Colors.green, fontSize: 14),
-                          ),
-                        )
                       ],
                     ),
                   ),
                 ),
-                MyItemsDivider(),
-                CardMaker("Add Promo Code", Icons.discount_outlined)
+                line(),
+                make("أضف رمز العرض", Icons.discount_outlined)
               ],
             )),
       ),
     );
   }
 
-  Padding TotersCashCard() {
+  Padding second_cards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -274,19 +275,12 @@ class _accountState extends State<account> {
         child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
-                    Text(
-                      "Toters Cash",
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Icon(
@@ -294,7 +288,14 @@ class _accountState extends State<account> {
                         color: Colors.green,
                         size: 25,
                       ),
-                    )
+                    ),
+                    Text(
+                      "الرصيد النقدي لدى توترز",
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
                   ],
                 ),
                 Padding(
@@ -304,41 +305,41 @@ class _accountState extends State<account> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 5),
+                          child: Text(
+                            "0 د.ع",
+                            style: TextStyle(color: Colors.green, fontSize: 14),
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            "المحفظة",
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ),
                         Icon(
                           Icons.wallet_outlined,
                           color: Colors.black.withOpacity(0.3),
                           size: 25,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            "Wallet",
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                        ),
-                        const Spacer(),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 5),
-                          child: Text(
-                            "IQD 0",
-                            style: TextStyle(color: Colors.green, fontSize: 14),
-                          ),
-                        )
                       ],
                     ),
                   ),
                 ),
-                MyItemsDivider(),
-                CardMaker("Add Funds", Icons.add),
-                MyItemsDivider(),
-                CardMaker("Send Funds", Icons.north_east)
+                line(),
+                make("أضف الى الرصيد", Icons.add),
+                line(),
+                make("تحويل الأموال", Icons.north_east)
               ],
             )),
       ),
     );
   }
 
-  Padding MyItemsDivider() {
+  Padding line() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
       child: Container(
@@ -348,7 +349,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding TopButtonsCards() {
+  Padding first_cards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -363,10 +364,10 @@ class _accountState extends State<account> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TopOptions("Profile", Icons.manage_accounts_rounded),
-              TopOptions("Support", Icons.support_agent_outlined),
-              TopOptions("Payment", Icons.payment_outlined),
-              TopOptions("Language", Icons.language_outlined)
+              options("الملف الشخصي", Icons.manage_accounts_rounded),
+              options("مركز المساعدة", Icons.support_agent_outlined),
+              options("طرق الدفع", Icons.payment_outlined),
+              options("اللغة", Icons.language_outlined)
             ],
           ),
         ),
@@ -374,66 +375,65 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding GiftButton(BuildContext context) {
+  Padding sidecard(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: GestureDetector(
-        onTap: () {},
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.5,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Colors.white),
-          child: Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.card_giftcard,
-                  color: Colors.green,
-                  size: 30,
-                ),
+      padding: const EdgeInsets.all(18),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.green,
+                size: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: const [
-                    Text(
-                      "Green",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      "0 Pts",
-                      style: TextStyle(
-                        fontSize: 13,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children:[
+                  Text(
+                    "الفئة الخضراء",
+                    style: TextStyle(
+                        fontSize: 16,
                         color: Colors.black,
-                      ),
-                    )
-                  ],
-                ),
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  Text(
+                    "0 نقطة",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  )
+                ],
               ),
-              const Spacer(),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.green,
-                  size: 20,
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.card_giftcard,
+                color: Colors.green,
+                size: 30,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  GestureDetector TopOptions(String label, IconData iconname) {
+  GestureDetector options(String label, IconData iconname) {
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -456,7 +456,7 @@ class _accountState extends State<account> {
             ),
             Text(
               label,
-              style: const TextStyle(fontSize: 14, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
             )
           ],
         ),

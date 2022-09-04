@@ -15,12 +15,12 @@ class _toters_homeState extends State<toters_home> {
     'images/1.jpg',
     'images/1.jpg',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           titleSpacing: 0,
           toolbarHeight: 80,
           backgroundColor: Colors.white,
@@ -29,7 +29,6 @@ class _toters_homeState extends State<toters_home> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                //mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Icon(
                     Icons.filter_list_alt,
