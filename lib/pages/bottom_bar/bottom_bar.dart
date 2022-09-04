@@ -1,8 +1,12 @@
 import 'package:circle_bottom_navigation_bar/circle_bottom_navigation_bar.dart';
 import 'package:circle_bottom_navigation_bar/widgets/tab_data.dart';
 import 'package:flutter/material.dart';
+import 'package:toters/pages/account_page/account_page.dart';
+import 'package:toters/pages/orders_page/orders_page.dart';
 
+import '../delegate_page/delegate_page.dart';
 import '../home_page/home_page.dart';
+import '../serche_page/serche_page.dart';
 
 class bottom_bar extends StatefulWidget {
   const bottom_bar({Key? key}) : super(key: key);
@@ -15,10 +19,10 @@ class _bottom_barState extends State<bottom_bar> {
   int currentPage = 0;
   final List<Widget> _pages = [
     toters_home(),
-    toters_home(),
-    toters_home(),
-    toters_home(),
-    toters_home(),
+    serche(),
+    delegate(),
+    orders(),
+    account(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,7 @@ List<TabData> getTabsData() {
     TabData(
       icon: Icons.home,
       iconSize: 30,
-      title: 'الرئيسية',
+      title: 'رئيسية',
       fontSize: 17,
       fontWeight: FontWeight.bold,
     ),
@@ -86,14 +90,14 @@ List<TabData> getTabsData() {
     TabData(
       icon: Icons.shopping_cart_checkout_rounded,
       iconSize: 30,
-      title: 'الطلبات',
+      title: 'طلبات',
       fontSize: 17,
       fontWeight: FontWeight.bold,
     ),
     TabData(
       icon: Icons.person_outline_rounded,
       iconSize: 30,
-      title: 'الحساب',
+      title: 'حساب',
       fontSize: 17,
       fontWeight: FontWeight.bold,
     ),

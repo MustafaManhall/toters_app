@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
-import 'package:toters/pages/burgar_page/burgar_page.dart';
+
+import '../other/burgar_page/burgar_page.dart';
 
 class toters_home extends StatefulWidget {
 
@@ -12,10 +11,6 @@ class toters_home extends StatefulWidget {
 
 class _toters_homeState extends State<toters_home> {
   final List<String> listImages = [
-    'images/1.jpg',
-    'images/1.jpg',
-    'images/1.jpg',
-    'images/1.jpg',
     'images/1.jpg',
     'images/1.jpg',
     'images/1.jpg',
@@ -29,47 +24,43 @@ class _toters_homeState extends State<toters_home> {
           titleSpacing: 0,
           toolbarHeight: 80,
           backgroundColor: Colors.white,
-          elevation: 2,
+          elevation: 1,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.only(),
-                child: Icon(
-                  Icons.notifications_outlined,
-                  color: Colors.black,
-                  size: 30,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 240),
-                child: Icon(
-                  Icons.filter_list_alt,
-                  color: Colors.black,
-                  size: 30,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 40),
-                child: Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.black,
-                ),
-              ),
-              Column(
+              Row(
+                //mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "توصيل الى",
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  Icon(
+                    Icons.filter_list_alt,
+                    color: Colors.grey,
+                    size: 30,
                   ),
-                  Text(
-                    "بغداد , العراق",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                  Icon(
+                    Icons.notifications_outlined,
+                    color: Colors.grey,
+                    size: 30,
                   ),
                 ],
+              ),
+              Padding(
+                padding:EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "توصيل الى",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    Text(
+                      "بغداد , العراق",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -87,7 +78,7 @@ class _toters_homeState extends State<toters_home> {
                       SizedBox(width: 5,),
                       Column(
                         children: [
-                          Text("نقطة",style: TextStyle(fontSize: 20),),
+                          Text("نقطة",style: TextStyle(fontSize: 18),),
                           Icon(Icons.arrow_back_outlined,size: 20,),
                         ],
                       ),
@@ -129,13 +120,11 @@ class _toters_homeState extends State<toters_home> {
               CarouselImages(
                 scaleFactor: 0.6,
                 listImages: listImages,
-                height: 300.0,
+                height: 240.0,
                 borderRadius: 30.0,
                 cachedNetworkImage: true,
                 verticalAlignment: Alignment.bottomCenter,
-                onTap: (index) {
-                },
-
+                onTap: (index) {},
               ),
               SizedBox(height: 10,),
               Row(
@@ -199,9 +188,9 @@ class _toters_homeState extends State<toters_home> {
   }
   Container grayline(){
     return Container(
-      height: 2,
-      width: 20,
-      margin: EdgeInsets.all(5),
+      height: 4,
+      width: 30,
+      margin: EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.5),
         borderRadius: BorderRadius.circular(5),
@@ -241,13 +230,7 @@ class _toters_homeState extends State<toters_home> {
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => burgar(
-                    rname: rName,
-                    imagepath: imagePath,
-                    disc: dis,
-                    stars: stars,
-                    timee: time,
-                  ))
+                  MaterialPageRoute(builder: (context) => burgar())
               );
             },
             child: Stack(
@@ -302,13 +285,7 @@ class _toters_homeState extends State<toters_home> {
           GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => burgar(
-                      rname: rName,
-                      imagepath: imagePath,
-                      disc: dis,
-                      stars: stars,
-                      timee: time,
-                    ))
+                    MaterialPageRoute(builder: (context) => burgar())
                 );
               },
               child: Column(
