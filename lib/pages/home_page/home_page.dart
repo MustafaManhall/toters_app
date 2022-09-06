@@ -1,7 +1,7 @@
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
 
-import '../other/burgar_page/burgar_page.dart';
+import '../other/burgar_page/resturant_page.dart';
 
 class toters_home extends StatefulWidget {
 
@@ -174,10 +174,10 @@ class _toters_homeState extends State<toters_home> {
                   scrollDirection: Axis.horizontal,
                   reverse: true,
                   children: [
-                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","هايزن بركر","4.8", "20% خصم"),
-                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","زرزور","4.0", "30% خصم"),
-                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فلكينو بركر","3.8", "10% خصم"),
-                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فايكنك بركر","5.0", "50% خصم"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","هايزن بركر",4.8, "20%"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","زرزور",4.0, "30%"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فلكينو بركر",3.8, "10%"),
+                    restaurants_card("https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg","36 - 26","فايكنك بركر",5.0, "50%"),
                   ],
                 ),
               ),
@@ -219,7 +219,7 @@ class _toters_homeState extends State<toters_home> {
       ),
     );
   }
-  Container restaurants_card(String imagePath,String time, String rName, String stars, String dis){
+  Container restaurants_card(String imagePath,String time, String rName, double stars, String dis){
     return Container(
       height: 400,
       width: 350,
@@ -229,72 +229,72 @@ class _toters_homeState extends State<toters_home> {
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => burgar())
+                  MaterialPageRoute(builder: (context) => burgar(
+                    re_de: "نقدم الذ واطيب الزرازير في العراق نقدمها لكم على شكل بركر",
+                    re_time: time,
+                    re_stars: stars,
+                    re_name: rName,
+                    re_image: imagePath,
+                    re_dis: dis,
+                  ))
               );
             },
-            child: Stack(
-              clipBehavior: Clip.none,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Container(
-                  height: 200,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      image: DecorationImage(
-                        image: NetworkImage(imagePath),
-                        fit: BoxFit.cover,
-                      )
-                  ),
-                ),
-                Positioned(
-                    top: 10,
-                    left: 15,
-                    child: Icon(Icons.favorite_border,size: 30,color: Colors.white,)
-                ),
-                Positioned(
-                  bottom: -10,
-                  left: 10,
-                  child: Container(
-                    width: 100,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [ BoxShadow(
-                          blurRadius: 7,
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 7,
-                        )
-                        ]
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 300,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          image: DecorationImage(
+                            image: NetworkImage(imagePath),
+                            fit: BoxFit.cover,
+                          )
+                      ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(time,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                        Text("د",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey),)
-                      ],
+                    Positioned(
+                        top: 10,
+                        left: 15,
+                        child: Icon(Icons.favorite_border,size: 30,color: Colors.white,)
                     ),
-                  ),
+                    Positioned(
+                      bottom: -10,
+                      left: 10,
+                      child: Container(
+                        width: 100,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [ BoxShadow(
+                              blurRadius: 7,
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 7,
+                            )
+                            ]
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(time,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            Text("د",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey),)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 10,),
+                Text(rName,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                Text("فاست فود - \$\$",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               ],
             ),
-          ),
-          SizedBox(height: 10,),
-          GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => burgar())
-                );
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(rName,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                  Text("فاست فود - \$\$",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ],
-              ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -310,11 +310,11 @@ class _toters_homeState extends State<toters_home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(stars,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(stars.toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                     Icon(Icons.star,color: Colors.greenAccent,size: 30,),
                   ],
                 ),
-              ),
+              ), //stars
               Container(
                 width: 100,
                 height: 50,
@@ -326,11 +326,11 @@ class _toters_homeState extends State<toters_home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(dis,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    Text("$dis خصم ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                     Icon(Icons.discount,color: Colors.red,size: 20,),
                   ],
                 ),
-              ),
+              ), //discount
               Container(
                 width: 100,
                 height: 50,
@@ -346,7 +346,7 @@ class _toters_homeState extends State<toters_home> {
                     Icon(Icons.add_circle,color: Colors.greenAccent,size: 20,),
                   ],
                 ),
-              ),
+              ), //won points
             ],),
         ],
       ),
