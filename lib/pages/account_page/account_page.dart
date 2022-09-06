@@ -66,7 +66,7 @@ class _accountState extends State<account> {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children:[
+                    children: [
                       Text(
                         "تسجيل خروج",
                         style: TextStyle(fontSize: 16, color: Colors.red),
@@ -381,9 +381,7 @@ class _accountState extends State<account> {
       child: Container(
         width: MediaQuery.of(context).size.width * 0.5,
         decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white
-        ),
+            borderRadius: BorderRadius.circular(20), color: Colors.white),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -398,7 +396,7 @@ class _accountState extends State<account> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                children:[
+                children: [
                   Text(
                     "الفئة الخضراء",
                     style: TextStyle(
