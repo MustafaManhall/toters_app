@@ -18,7 +18,7 @@ class _spalsh_pageState extends State<spalsh_page> {
   }
 
   Future Delay() async {
-    await Future.delayed(Duration(seconds: 1),);
+    await Future.delayed(Duration(seconds: 2),);
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottom_bar()));
   }
 
@@ -29,7 +29,6 @@ class _spalsh_pageState extends State<spalsh_page> {
       body: Center(
         child: Image.asset("images/2.jpg"),
       ),
-
     );
   }
 }

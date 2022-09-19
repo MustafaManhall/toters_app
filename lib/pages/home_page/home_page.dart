@@ -1,6 +1,8 @@
-import 'package:carousel_images/carousel_images.dart';
+import 'dart:convert';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../other/resturant_page/resturant_page.dart';
 
 
@@ -11,11 +13,30 @@ class toters_home extends StatefulWidget {
 }
 
 class _toters_homeState extends State<toters_home> {
-  final List<String> listImages = [
-    'images/1.jpg',
-    'images/1.jpg',
-    'images/1.jpg',
+  int activeIndex = 0 ;
+  final List<String> urlImages = [
+    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
+    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
   ];
+  Future getData() async{
+    var url=Uri.parse("http://10.0.2.2:8000/");
+    Response response= await get(url);
+    String body =response.body;
+    List<dynamic> list1=json.decode(body);
+    print(body);
+    for (int i=0; i<list1.length; i++){
+      setState(() {
+
+      });
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +72,14 @@ class _toters_homeState extends State<toters_home> {
                   children: [
                     Text(
                       "توصيل الى",
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: TextStyle(color: Colors.black, fontSize: 20,fontFamily: 'cairo'),
                     ),
                     Text(
                       "بغداد , العراق",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                          fontSize: 20,fontFamily: 'cairo'),
                     ),
                   ],
                 ),
@@ -79,13 +100,13 @@ class _toters_homeState extends State<toters_home> {
                       SizedBox(width: 5,),
                       Column(
                         children: [
-                          Text("نقطة", style: TextStyle(fontSize: 18),),
+                          Text("نقطة", style: TextStyle(fontSize: 18,fontFamily: 'cairo'),),
                           Icon(Icons.arrow_back_outlined, size: 20,),
                         ],
                       ),
                       SizedBox(width: 5,),
                       Text("0", style: TextStyle(
-                          fontSize: 40, fontWeight: FontWeight.bold),)
+                          fontSize: 40, fontWeight: FontWeight.bold,fontFamily: 'cairo'),)
                     ],
                   ),
                   Column(
@@ -98,7 +119,7 @@ class _toters_homeState extends State<toters_home> {
                             color: Colors.greenAccent,),
                           Text("الفئة الخضراء", style: TextStyle(color: Colors
                               .greenAccent, fontSize: 25, fontWeight: FontWeight
-                              .bold),),
+                              .bold,fontFamily: 'cairo'),),
                         ],
                       ),
                       Row(
@@ -116,23 +137,35 @@ class _toters_homeState extends State<toters_home> {
                       Text(
                         "تبقى 10 طلبات اضافية لغاية اغسطس 31 \n للترقية الى الفئة الذهبية.",
                         style: TextStyle(color: Colors.grey.withOpacity(0.7),
-                          fontSize: 15,),
+                          fontSize: 15,fontFamily: 'cairo'),
                         textAlign: TextAlign.right,
                       ),
                     ],
                   ),
                 ],
               ),
-              CarouselImages(
-                scaleFactor: 0.6,
-                listImages: listImages,
-                height: 240.0,
-                borderRadius: 30.0,
-                cachedNetworkImage: true,
-                verticalAlignment: Alignment.bottomCenter,
-                onTap: (index) {},
+              CarouselSlider.builder (
+              options : CarouselOptions (
+              height : 250,
+              //autoPlay: true,
+              reverse: true,
+              autoPlayInterval: Duration(seconds: 5),
+              viewportFraction: 1,
+              enlargeCenterPage: true,
+              onPageChanged: (index,reason) => (
+              setState(() => activeIndex = index)),),
+              itemCount : urlImages.length ,
+              itemBuilder : ( context , index , realIndex ) {
+                final urlImage = urlImages [ index ];
+                return buildImage (urlImage , index );}
+              ),
+              SizedBox ( height : 12 ) ,
+              Align(
+                alignment: Alignment.center,
+                child:buildIndicator(),
               ),
               SizedBox(height: 10,),
+              //done
               Row(
                 children: [
                   cards(
@@ -182,10 +215,10 @@ class _toters_homeState extends State<toters_home> {
                         Text("خصومات اسبوعية", style: TextStyle(
                             color: Colors.black,
                             fontSize: 25,
-                            fontWeight: FontWeight.bold),),
+                            fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
                         Text("احصل على خصم 50% على مطاعم هذا الاسبوع",
                           style: TextStyle(color: Colors.grey.withOpacity(0.7),
-                            fontSize: 17,),
+                            fontSize: 17,fontFamily: 'cairo'),
                           textAlign: TextAlign.right,
                         ),
                       ],
@@ -220,6 +253,32 @@ class _toters_homeState extends State<toters_home> {
         ]));
   }
 
+  Widget buildImage ( String urlImage , int index ) => Container (
+  margin : EdgeInsets.symmetric(horizontal : 10),
+  decoration: BoxDecoration(
+    color : Colors.grey,
+    borderRadius: BorderRadius.circular(20),
+    image: DecorationImage(
+      fit : BoxFit.cover,
+      image: NetworkImage(urlImage),
+    )
+  ),
+  ); // Container
+
+  Widget buildIndicator () => Directionality(
+    textDirection: TextDirection.rtl,
+    child: AnimatedSmoothIndicator(
+    activeIndex : activeIndex ,
+    count : urlImages.length ,
+      effect : JumpingDotEffect (
+        dotWidth : 10 ,
+        dotHeight : 10 ,
+        activeDotColor : Colors.red ,
+        dotColor : Colors.black12 ,
+      ) , // JumpingDotEffect
+    ),
+  );
+
   Container grayline() {
     return Container(
       height: 4,
@@ -234,23 +293,23 @@ class _toters_homeState extends State<toters_home> {
 
   Container cards(String imagePath, String cardName) {
     return Container(
-      height: 150,
+      height: 120,
       width: 120,
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(10),
           boxShadow: [ BoxShadow(
-            blurRadius: 7,
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 7,
+            blurRadius: 5,
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 5,
           )
           ]
       ),
       child: Column(
         children: [
-          Center(child: Image.network(imagePath, width: 100, height: 100,)),
-          Text(cardName, style: TextStyle(fontSize: 20),),
+          Center(child: Image.network(imagePath, width: 80, height: 80,)),
+          Text(cardName, style: TextStyle(fontSize: 18,fontFamily: 'cairo'),),
         ],
       ),
     );
@@ -278,67 +337,70 @@ class _toters_homeState extends State<toters_home> {
                       ))
               );
             },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          image: DecorationImage(
-                            image: NetworkImage(imagePath),
-                            fit: BoxFit.cover,
-                          )
-                      ),
-                    ),
-                    Positioned(
-                        top: 10,
-                        left: 15,
-                        child: Icon(
-                          Icons.favorite_border, size: 30, color: Colors.white,)
-                    ),
-                    Positioned(
-                      bottom: -10,
-                      left: 10,
-                      child: Container(
-                        width: 100,
-                        height: 50,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        height: 200,
+                        width: 300,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [ BoxShadow(
-                              blurRadius: 7,
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 7,
+                            borderRadius: BorderRadius.circular(25),
+                            image: DecorationImage(
+                              image: NetworkImage(imagePath),
+                              fit: BoxFit.cover,
                             )
-                            ]
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(time, style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),),
-                            Text("د", style: TextStyle(fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),)
-                          ],
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Text(rName,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-                Text("فاست فود - \$\$",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-              ],
+                      Positioned(
+                          top: 10,
+                          left: 15,
+                          child: Icon(
+                            Icons.favorite_border, size: 30, color: Colors.white,)
+                      ),
+                      Positioned(
+                        bottom: -10,
+                        left: 10,
+                        child: Container(
+                          width: 100,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [ BoxShadow(
+                                blurRadius: 7,
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 7,
+                              )
+                              ]
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(time, style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
+                              Text("د", style: TextStyle(fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,fontFamily: 'cairo'),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Text(rName,
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
+                  Text("فاست فود - \$\$",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
+                ],
+              ),
             ),
           ),
           Row(
@@ -356,7 +418,7 @@ class _toters_homeState extends State<toters_home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(stars.toString(), style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),),
+                        fontSize: 20, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
                     Icon(Icons.star, color: Colors.greenAccent, size: 30,),
                   ],
                 ),
@@ -373,7 +435,7 @@ class _toters_homeState extends State<toters_home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("$dis خصم ", style: TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),),
+                        fontSize: 15, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
                     Icon(Icons.discount, color: Colors.red, size: 20,),
                   ],
                 ),
@@ -390,7 +452,7 @@ class _toters_homeState extends State<toters_home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("أكتسب نقاط", style: TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),),
+                        fontSize: 13, fontWeight: FontWeight.bold,fontFamily: 'cairo'),),
                     Icon(
                       Icons.add_circle, color: Colors.greenAccent, size: 20,),
                   ],

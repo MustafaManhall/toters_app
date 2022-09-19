@@ -11,11 +11,11 @@ class burgar extends StatefulWidget {
   final re_stars;
 
   burgar({
-    required this.re_name, //"زرزور"
-    required this.re_image, //"https://mybayutcdn.bayut.com/mybayut/wp-content/uploads/Burger-RestaurantsAR09112020-2.jpg"
-    required this.re_dis, //"20%"
-    required this.re_de, //"نقدم الذ واطيب الزرازير في العراق نقدمها لكم على شكل بركر"
-    required this.re_time, //"30-60"
+    required this.re_name,
+    required this.re_image,
+    required this.re_dis,
+    required this.re_de,
+    required this.re_time,
     required this.re_stars,
   });
 
@@ -405,7 +405,13 @@ class _burgarState extends State<burgar> {
           return GestureDetector(
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => akla_page()));
+                  .push(MaterialPageRoute(builder: (context) => akla_page(
+                ak_des: "أطيب بركر على الكون يحتوي على العديد من المكونات",
+                ak_image: urlimage,
+                ak_name: food_name,
+                ak_price: food_price,
+                ak_wig: food_wight,
+              )));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

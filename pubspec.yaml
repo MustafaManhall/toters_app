@@ -40,6 +40,9 @@ dependencies:
   google_nav_bar: ^5.0.6
   carousel_pro: ^1.0.0
   carousel_slider: ^4.1.1
+  smooth_page_indicator: ^1.0.0+2
+  http: ^0.13.5
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -84,11 +87,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: fonts/Cairo/Cairo-Black.ttf
+        - asset: fonts/Cairo/Cairo-ExtraBold.ttf
+        - asset: fonts/Cairo/Cairo-Bold.ttf
+        - asset: fonts/Cairo/Cairo-ExtraLight.ttf
+        - asset: fonts/Cairo/Cairo-Light.ttf
+        - asset: fonts/Cairo/Cairo-Medium.ttf
+        - asset: fonts/Cairo/Cairo-Regular.ttf
+        - asset: fonts/Cairo/Cairo-SemiBold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
