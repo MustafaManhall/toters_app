@@ -18,7 +18,7 @@ class _spalsh_pageState extends State<spalsh_page> {
   }
 
   Future Delay() async {
-    await Future.delayed(Duration(seconds: 2),);
+    await Future.delayed(Duration(seconds: 5),);
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottom_bar()));
   }
 
