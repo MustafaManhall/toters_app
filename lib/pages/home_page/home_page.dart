@@ -388,10 +388,8 @@ class _TotersHomeState extends State<TotersHome> {
     );
   }
 
-  Container restaurantscard(
-      String imagePath, String time, String rName, double stars, String dis) {
-    // ignore: sized_box_for_whitespace
-    return Container(
+  SizedBox restaurantscard(String imagePath, String time, String rName, double stars, String dis) {
+    return SizedBox(
       height: 400,
       width: 350,
       child: Column(
