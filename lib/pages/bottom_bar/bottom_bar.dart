@@ -8,21 +8,21 @@ import '../delegate_page/delegate_page.dart';
 import '../home_page/home_page.dart';
 import '../serche_page/serche_page.dart';
 
-class bottom_bar extends StatefulWidget {
-  const bottom_bar({Key? key}) : super(key: key);
+class BottomBar extends StatefulWidget {
+  const BottomBar({Key? key}) : super(key: key);
 
   @override
-  State<bottom_bar> createState() => _bottom_barState();
+  State<BottomBar> createState() => _BottomBarState();
 }
 
-class _bottom_barState extends State<bottom_bar> {
+class _BottomBarState extends State<BottomBar> {
   int currentPage = 0;
   final List<Widget> _pages = [
-    toters_home(),
-    serche(),
-    delegate(),
-    orders(),
-    account(),
+    const TotersHome(),
+    const Serche(),
+    const Delegate(),
+    const Orders(),
+    const Account(),
   ];
   @override
   Widget build(BuildContext context) {

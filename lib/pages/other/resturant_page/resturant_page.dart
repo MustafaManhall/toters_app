@@ -1,8 +1,10 @@
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
 import '../akla_page/akla_page.dart';
 
-class burgar extends StatefulWidget {
+class Burgar extends StatefulWidget {
   final re_name;
   final re_image;
   final re_dis;
@@ -10,7 +12,7 @@ class burgar extends StatefulWidget {
   final re_time;
   final re_stars;
 
-  burgar({
+  const Burgar({super.key, 
     required this.re_name,
     required this.re_image,
     required this.re_dis,
@@ -20,10 +22,10 @@ class burgar extends StatefulWidget {
   });
 
   @override
-  State<burgar> createState() => _burgarState();
+  State<Burgar> createState() => _BurgarState();
 }
 
-class _burgarState extends State<burgar> {
+class _BurgarState extends State<Burgar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,7 @@ class _burgarState extends State<burgar> {
                 width: MediaQuery.of(context).size.width - 20,
                 height: 2,
                 color: Colors.grey,
-                margin: EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(right: 10),
               ),
               comments(
                 "Mustafa",
@@ -64,7 +66,7 @@ class _burgarState extends State<burgar> {
                 width: MediaQuery.of(context).size.width - 20,
                 height: 2,
                 color: Colors.grey,
-                margin: EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(right: 10),
               ),
               add_comment(
                 Colors.grey,
@@ -78,8 +80,8 @@ class _burgarState extends State<burgar> {
                 height: 10,
                 color: Colors.grey.withOpacity(0.4),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   "شائع",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
@@ -97,8 +99,8 @@ class _burgarState extends State<burgar> {
     );
   }
 
-  Container image_time(String image, String time) {
-    return Container(
+  SizedBox image_time(String image, String time) {
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 200,
       child: Stack(
@@ -129,12 +131,12 @@ class _burgarState extends State<burgar> {
                     children: [
                       Text(
                         time,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      Text(
+                      const Text(
                         "دقائق",
                         style: TextStyle(
                           fontSize: 18,
@@ -150,18 +152,18 @@ class _burgarState extends State<burgar> {
 
   Container name_description(String name, String description) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold),
           ),
           Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 color: Colors.black54,
                 fontWeight: FontWeight.bold),
@@ -173,6 +175,7 @@ class _burgarState extends State<burgar> {
   }
 
   Container resturant_details(String dis) {
+    // ignore: avoid_unnecessary_containers
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -180,7 +183,7 @@ class _burgarState extends State<burgar> {
           Container(
             width: 100,
             height: 40,
-            margin: EdgeInsets.all(3),
+            margin: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               color: Colors.red.withOpacity(0.6),
               borderRadius: BorderRadius.circular(10),
@@ -190,9 +193,9 @@ class _burgarState extends State<burgar> {
               children: [
                 Text(
                   "$dis خصم ",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Icon(
+                const Icon(
                   Icons.discount,
                   color: Colors.red,
                   size: 20,
@@ -203,14 +206,14 @@ class _burgarState extends State<burgar> {
           Container(
             width: 100,
             height: 40,
-            margin: EdgeInsets.all(3),
+            margin: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               color: Colors.blue.withOpacity(0.6),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   "أكتسب نقاط",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -279,15 +282,15 @@ class _burgarState extends State<burgar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
             child: Icon(
               Icons.arrow_back_ios,
               size: 25,
               color: Colors.green,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
@@ -295,7 +298,7 @@ class _burgarState extends State<burgar> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 stars(star1, star2, star3, star4, star5),
-                Text(
+                const Text(
                   "مرتكز على 1887 التقييمات",
                   style: TextStyle(
                       fontSize: 15,
@@ -309,7 +312,7 @@ class _burgarState extends State<burgar> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               stars_text.toString(),
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -317,7 +320,7 @@ class _burgarState extends State<burgar> {
     ); //stars
   }
 
-  Container comments(
+  SizedBox comments(
     String name,
     String comment,
     Color? star1,
@@ -326,7 +329,7 @@ class _burgarState extends State<burgar> {
     Color? star4,
     Color? star5,
   ) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 75,
       child: Column(
@@ -343,7 +346,7 @@ class _burgarState extends State<burgar> {
                 padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
                 child: Text(
                   name,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -352,7 +355,7 @@ class _burgarState extends State<burgar> {
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Text(
               comment,
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: const TextStyle(fontSize: 18, color: Colors.grey),
               textAlign: TextAlign.right,
             ),
           ),
@@ -364,13 +367,13 @@ class _burgarState extends State<burgar> {
   Container add_comment(
       Color? star1, Color? star2, Color? star3, Color? star4, Color? star5) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Row(
         children: [
           stars(star1, star2, star3, star4, star5),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Spacer(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "أكتب تعليق",
               style: TextStyle(
@@ -380,7 +383,7 @@ class _burgarState extends State<burgar> {
               textAlign: TextAlign.right,
             ),
           ),
-          Icon(
+          const Icon(
             Icons.add_comment_rounded,
             size: 25,
             color: Colors.green,
@@ -390,22 +393,22 @@ class _burgarState extends State<burgar> {
     );
   }
 
-  Container popular(
+  SizedBox popular(
       String urlimage, String food_name, String food_price, String food_wight) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 300,
       child: ListView.builder(
         itemCount: 3,
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         reverse: true,
         itemExtent: 210,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => akla_page(
+                  .push(MaterialPageRoute(builder: (context) => AklaPage(
                 ak_des: "أطيب بركر على الكون يحتوي على العديد من المكونات",
                 ak_image: urlimage,
                 ak_name: food_name,
@@ -429,7 +432,7 @@ class _burgarState extends State<burgar> {
                 ),
                 Text(
                   food_name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -437,14 +440,14 @@ class _burgarState extends State<burgar> {
                   children: [
                     Text(
                       food_price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.green,
                         fontSize: 18,
                       ),
                     ),
                     Text(
                       " / $food_wight",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
                       ),

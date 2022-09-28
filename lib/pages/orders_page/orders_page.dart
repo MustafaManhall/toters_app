@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class orders extends StatefulWidget {
-  const orders({Key? key}) : super(key: key);
+class Orders extends StatefulWidget {
+  const Orders({Key? key}) : super(key: key);
 
   @override
-  State<orders> createState() => _ordersState();
+  State<Orders> createState() => _OrdersState();
 }
 
-class _ordersState extends State<orders> {
+class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -20,7 +20,7 @@ class _ordersState extends State<orders> {
           automaticallyImplyLeading: false,
           elevation: 0.7,
           toolbarHeight: 0,
-          bottom: TabBar(
+          bottom: const TabBar(
             indicatorColor: Color(0xFF00b593),
             tabs: <Widget>[
               Tab(
@@ -40,7 +40,7 @@ class _ordersState extends State<orders> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset("images/3.jpg"),
-                Text("لا يوجد اي طلبات سابقة",style: TextStyle(fontSize: 30,color: Color(0xFF00b593)),),
+                const Text("لا يوجد اي طلبات سابقة",style: TextStyle(fontSize: 30,color: Color(0xFF00b593)),),
               ],
             ),
             Column(
@@ -48,7 +48,7 @@ class _ordersState extends State<orders> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset("images/3.jpg"),
-                Text("لا يوجد اي طلبات قادمة",style: TextStyle(fontSize: 30,color: Color(0xFF00b593)),),
+                const Text("لا يوجد اي طلبات قادمة",style: TextStyle(fontSize: 30,color: Color(0xFF00b593)),),
               ],
             ),
           ],

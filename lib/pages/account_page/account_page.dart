@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class account extends StatefulWidget {
-  const account({Key? key}) : super(key: key);
+class Account extends StatefulWidget {
+  const Account({Key? key}) : super(key: key);
 
   @override
-  State<account> createState() => _accountState();
+  State<Account> createState() => _AccountState();
 }
 
-class _accountState extends State<account> {
+class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _accountState extends State<account> {
         elevation: 0.0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "مصطفى منهل",
               style: TextStyle(
@@ -34,10 +34,10 @@ class _accountState extends State<account> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             sidecard(context),
-            first_cards(),
-            second_cards(),
-            third_cards(),
-            Account_Details_Cards(),
+            firstcards(),
+            secondcards(),
+            thirdcards(),
+            accountdetailscards(),
             helpcenter(),
             signout(),
           ],
@@ -63,10 +63,10 @@ class _accountState extends State<account> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                    children: const [
                       Text(
                         "تسجيل خروج",
                         style: TextStyle(fontSize: 16, color: Colors.red),
@@ -126,7 +126,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding Account_Details_Cards() {
+  Padding accountdetailscards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -178,10 +178,10 @@ class _accountState extends State<account> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Text(
                 label,
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: const TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
             Icon(
@@ -195,7 +195,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding third_cards() {
+  Padding thirdcards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -230,15 +230,15 @@ class _accountState extends State<account> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Text(
                             "0 د.ع",
                             style: TextStyle(color: Colors.green, fontSize: 14),
                           ),
                         ),
-                        Spacer(),
-                        Padding(
+                        const Spacer(),
+                        const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 5),
                           child: Text(
                             "رصيد",
@@ -262,7 +262,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding second_cards() {
+  Padding secondcards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -305,15 +305,15 @@ class _accountState extends State<account> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.symmetric(vertical: 5),
                           child: Text(
                             "0 د.ع",
                             style: TextStyle(color: Colors.green, fontSize: 14),
                           ),
                         ),
-                        Spacer(),
-                        Padding(
+                        const Spacer(),
+                        const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 5),
                           child: Text(
                             "المحفظة",
@@ -349,7 +349,7 @@ class _accountState extends State<account> {
     );
   }
 
-  Padding first_cards() {
+  Padding firstcards() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -385,7 +385,7 @@ class _accountState extends State<account> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.arrow_back_ios,
@@ -396,7 +396,7 @@ class _accountState extends State<account> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                children: [
+                children: const [
                   Text(
                     "الفئة الخضراء",
                     style: TextStyle(
@@ -417,7 +417,7 @@ class _accountState extends State<account> {
                 ],
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.card_giftcard,
@@ -434,30 +434,28 @@ class _accountState extends State<account> {
   GestureDetector options(String label, IconData iconname) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        child: Column(
-          children: [
-            Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.withOpacity(0.2)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Icon(
-                    iconname,
-                    color: Colors.black45,
-                    size: 25,
-                  ),
-                )),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(
-              label,
-              style: const TextStyle(fontSize: 16, color: Colors.black),
-            )
-          ],
-        ),
+      child: Column(
+        children: [
+          Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.withOpacity(0.2)),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(
+                  iconname,
+                  color: Colors.black45,
+                  size: 25,
+                ),
+              )),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16, color: Colors.black),
+          )
+        ],
       ),
     );
   }

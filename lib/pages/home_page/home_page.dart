@@ -5,12 +5,14 @@ import 'package:http/http.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../other/resturant_page/resturant_page.dart';
 
-class toters_home extends StatefulWidget {
+class TotersHome extends StatefulWidget {
+  const TotersHome({super.key});
+
   @override
-  State<toters_home> createState() => _toters_homeState();
+  State<TotersHome> createState() => _TotersHomeState();
 }
 
-class _toters_homeState extends State<toters_home> {
+class _TotersHomeState extends State<TotersHome> {
   int activeIndex = 0;
 
   List<dynamic> imageurll = [];
@@ -48,7 +50,7 @@ class _toters_homeState extends State<toters_home> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.filter_list_alt,
                     color: Colors.grey,
@@ -62,10 +64,10 @@ class _toters_homeState extends State<toters_home> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
+                  children: const [
                     Text(
                       "توصيل الى",
                       style: TextStyle(
@@ -97,11 +99,11 @@ class _toters_homeState extends State<toters_home> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Column(
-                        children: [
+                        children: const [
                           Text(
                             "نقطة",
                             style: TextStyle(fontSize: 18, fontFamily: 'cairo'),
@@ -112,10 +114,10 @@ class _toters_homeState extends State<toters_home> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text(
+                      const Text(
                         "0",
                         style: TextStyle(
                             fontSize: 40,
@@ -129,7 +131,7 @@ class _toters_homeState extends State<toters_home> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Row(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.info_outline,
                             size: 30,
@@ -180,21 +182,20 @@ class _toters_homeState extends State<toters_home> {
                     case ConnectionState.waiting :
                       return const Text("waiting");
                     case ConnectionState.done :
-                      return CarouselSliderbuilder();
+                      return carouselSliderbuilder();
                     default:
                       return const Text("default");
                   }
                 },
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Align(
                 alignment: Alignment.center,
                 child: buildIndicator(),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              //done
               Row(
                 children: [
                   cards(
@@ -225,14 +226,14 @@ class _toters_homeState extends State<toters_home> {
                 height: 10,
                 width: MediaQuery.of(context).size.width,
                 color: Colors.grey.withOpacity(0.4),
-                margin: EdgeInsets.only(top: 10, bottom: 10),
+                margin: const EdgeInsets.only(top: 10, bottom: 10),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_back_ios_sharp,
                       size: 20,
                       color: Colors.greenAccent,
@@ -241,7 +242,7 @@ class _toters_homeState extends State<toters_home> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
+                        const Text(
                           "خصومات اسبوعية",
                           style: TextStyle(
                               color: Colors.black,
@@ -269,25 +270,25 @@ class _toters_homeState extends State<toters_home> {
                   scrollDirection: Axis.horizontal,
                   reverse: true,
                   children: [
-                    restaurants_card(
+                    restaurantscard(
                         "https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg",
                         "36 - 26",
                         "هايزن بركر",
                         4.8,
                         "20%"),
-                    restaurants_card(
+                    restaurantscard(
                         "https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg",
                         "36 - 26",
                         "زرزور",
                         4.0,
                         "30%"),
-                    restaurants_card(
+                    restaurantscard(
                         "https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg",
                         "36 - 26",
                         "فلكينو بركر",
                         3.8,
                         "10%"),
-                    restaurants_card(
+                    restaurantscard(
                         "https://www.arrajol.com/sites/default/files/styles/800x533/public/2018/07/16/223141-1.jpg",
                         "36 - 26",
                         "فايكنك بركر",
@@ -301,12 +302,12 @@ class _toters_homeState extends State<toters_home> {
         ]));
   }
 
-  Widget CarouselSliderbuilder() => CarouselSlider.builder(
+  Widget carouselSliderbuilder() => CarouselSlider.builder(
       options: CarouselOptions(
         height: 250,
         //autoPlay: true,
         reverse: true,
-        autoPlayInterval: Duration(seconds: 5),
+        autoPlayInterval: const Duration(seconds: 5),
         viewportFraction: 1,
         enlargeCenterPage: true,
         onPageChanged: (index, reason) =>
@@ -319,7 +320,7 @@ class _toters_homeState extends State<toters_home> {
       });
 
   Widget buildImage(String urlImage, int index) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.circular(20),
@@ -334,7 +335,7 @@ class _toters_homeState extends State<toters_home> {
         child: AnimatedSmoothIndicator(
           activeIndex: activeIndex,
           count: imageurll.length,
-          effect: JumpingDotEffect(
+          effect: const JumpingDotEffect(
             dotWidth: 10,
             dotHeight: 10,
             activeDotColor: Colors.red,
@@ -347,7 +348,7 @@ class _toters_homeState extends State<toters_home> {
     return Container(
       height: 4,
       width: 30,
-      margin: EdgeInsets.all(2),
+      margin: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.5),
         borderRadius: BorderRadius.circular(5),
@@ -359,7 +360,7 @@ class _toters_homeState extends State<toters_home> {
     return Container(
       height: 120,
       width: 120,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -380,15 +381,16 @@ class _toters_homeState extends State<toters_home> {
           )),
           Text(
             cardName,
-            style: TextStyle(fontSize: 18, fontFamily: 'cairo'),
+            style: const TextStyle(fontSize: 18, fontFamily: 'cairo'),
           ),
         ],
       ),
     );
   }
 
-  Container restaurants_card(
+  Container restaurantscard(
       String imagePath, String time, String rName, double stars, String dis) {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 400,
       width: 350,
@@ -398,7 +400,7 @@ class _toters_homeState extends State<toters_home> {
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => burgar(
+                  builder: (context) => Burgar(
                         re_de:
                             "نقدم الذ واطيب الزرازير في العراق نقدمها لكم على شكل بركر",
                         re_time: time,
@@ -427,7 +429,7 @@ class _toters_homeState extends State<toters_home> {
                               fit: BoxFit.cover,
                             )),
                       ),
-                      Positioned(
+                      const Positioned(
                           top: 10,
                           left: 15,
                           child: Icon(
@@ -457,12 +459,12 @@ class _toters_homeState extends State<toters_home> {
                             children: [
                               Text(
                                 time,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'cairo'),
                               ),
-                              Text(
+                              const Text(
                                 "د",
                                 style: TextStyle(
                                     fontSize: 10,
@@ -476,17 +478,17 @@ class _toters_homeState extends State<toters_home> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     rName,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'cairo'),
                   ),
-                  Text(
+                  const Text(
                     "فاست فود - \$\$",
                     style: TextStyle(
                         fontSize: 20,
@@ -503,7 +505,7 @@ class _toters_homeState extends State<toters_home> {
               Container(
                 width: 70,
                 height: 50,
-                margin: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(10),
@@ -513,12 +515,12 @@ class _toters_homeState extends State<toters_home> {
                   children: [
                     Text(
                       stars.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'cairo'),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: Colors.greenAccent,
                       size: 30,
@@ -529,7 +531,7 @@ class _toters_homeState extends State<toters_home> {
               Container(
                 width: 100,
                 height: 50,
-                margin: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.red.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10),
@@ -539,12 +541,12 @@ class _toters_homeState extends State<toters_home> {
                   children: [
                     Text(
                       "$dis خصم ",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'cairo'),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.discount,
                       color: Colors.red,
                       size: 20,
@@ -555,14 +557,14 @@ class _toters_homeState extends State<toters_home> {
               Container(
                 width: 100,
                 height: 50,
-                margin: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.blue.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "أكتسب نقاط",
                       style: TextStyle(

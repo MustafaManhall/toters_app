@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class serche extends StatefulWidget {
-  const serche({Key? key}) : super(key: key);
+class Serche extends StatefulWidget {
+  const Serche({Key? key}) : super(key: key);
 
   @override
-  State<serche> createState() => _sercheState();
+  State<Serche> createState() => _SercheState();
 }
 
-class _sercheState extends State<serche> {
+class _SercheState extends State<Serche> {
   List<String> imagesListe = [
     "images/1.jpg",
     "images/1.jpg",
@@ -37,9 +37,9 @@ class _sercheState extends State<serche> {
              ),
              child: Row(
                mainAxisAlignment: MainAxisAlignment.end,
-               children: [
+               children: const [
                  Padding(
-                   padding: const EdgeInsets.all(8.0),
+                   padding: EdgeInsets.all(8.0),
                    child: Text("البحث عن محل أو قطعة",style: TextStyle(color: Colors.grey),),
                  ),
                  Icon(
@@ -57,12 +57,12 @@ class _sercheState extends State<serche> {
           Container(
             width: double.infinity,
             height: 150,
-            color: Color(0xFF00b593),
+            color: const Color(0xFF00b593),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.arrow_back_ios,
                     color: Colors.white,
@@ -73,19 +73,19 @@ class _sercheState extends State<serche> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
+                    const Text(
                       "تحليل الطلبات",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width - 200,
-                      child:Text(
+                      child:const Text(
                         "جديدنا على توترز اذا يسع على دراجة نارية يمكننا توصيله",
                         style: TextStyle(
                           fontSize: 17,
@@ -100,9 +100,9 @@ class _sercheState extends State<serche> {
                   height: 90,
                   width: 100,
                   decoration:BoxDecoration(
-                      color: Color(0xff00b68d),
+                      color: const Color(0xff00b68d),
                       borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage("images/6.jpg"),
                           fit: BoxFit.cover)),
                 ),
@@ -126,7 +126,7 @@ class _sercheState extends State<serche> {
   }
   Padding card(String image) {
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: SizedBox(
         width: double.infinity,
         height: 100,
@@ -136,7 +136,7 @@ class _sercheState extends State<serche> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
+            children: const [
              Text(
                 "خصومات السعادة",
                 style: TextStyle(
@@ -145,15 +145,13 @@ class _sercheState extends State<serche> {
                     fontWeight: FontWeight.bold),
               ),
               Flexible(
-                child: Container(
-                  child: Text(
-                    "احصل على خصم 50% على المطاعم\n هذا الاسبوع",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
-                    textAlign: TextAlign.right,
+                child: Text(
+                  "احصل على خصم 50% على المطاعم\n هذا الاسبوع",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
                   ),
+                  textAlign: TextAlign.right,
                 ),
               ),
              Text(
@@ -165,7 +163,7 @@ class _sercheState extends State<serche> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
               width: 10,
             ),
           Container(
